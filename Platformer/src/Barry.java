@@ -32,5 +32,14 @@ public class Barry {
 	public void draw() {
 		g.setColor(Color.BLUE);
 		g.fillRect(xval, yval, width, height);
+		int a = 0;
+		int b = 0;
+		while (a < width) {
+			while (b < height) {
+				g.drawImage(skin, xval+a, yval+b, 32+a, 50+b, null);
+				b+=50;
+			}
+			a+=32;
+		}
 	}
 }
