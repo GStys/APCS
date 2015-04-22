@@ -33,13 +33,14 @@ public class Barry {
 		g.setColor(Color.BLUE);
 		g.fillRect(xval, yval, width, height);
 		int a = 0;
-		int b = 0;
 		while (a < width) {
+			int b = 0;
 			while (b < height) {
-				g.drawImage(skin, xval+a, yval+b, 32+a, 50+b, null);
-				b+=50;
+				Image temp = skin;
+				g.drawImage(temp, xval+a, yval+b, 20, 20, null);
+				b+=20;
 			}
-			a+=32;
+			a+=20;
 		}
 	}
 }
