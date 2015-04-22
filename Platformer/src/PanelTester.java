@@ -113,6 +113,7 @@ public class PanelTester implements ActionListener, KeyListener {
 
 	@Override
 	public void keyPressed(KeyEvent e) {
+		System.out.println(e.getKeyCode());
 		if (e.getKeyCode() == 37) {	jerry.left = true;	}
 		if (e.getKeyCode() == 38) {	jerry.up = true;	}
 		if (e.getKeyCode() == 39) {	jerry.right = true;	}
