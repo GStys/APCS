@@ -87,7 +87,7 @@ public class PanelTester implements ActionListener, KeyListener {
 	}
 
 	private void initTimer() {
-		t = new Timer(5, this);
+		t = new Timer(2, this);
 		t.setInitialDelay(190);
 		t.start();
 		// TODO Auto-generated method stub
