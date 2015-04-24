@@ -174,11 +174,13 @@ public class GJerald {
 	}
 
 	public void draw() {
-		if (left == true) {	moveLine(37);	}
-		if (up == true) {	moveLine(38);	}
-		if (right == true) {	moveLine(39);	}
-		if (down == true) {	moveLine(40);	}
-		if (dieCount == 0) {	place();	}
+		if (dieCount == 0) {
+			if (left == true) {	moveLine(37);	}
+			if (up == true) {	moveLine(38);	}
+			if (right == true) {	moveLine(39);	}
+			if (down == true) {	moveLine(40);	}
+			place();
+		}
 		else {	die();	}
 	}
 		
