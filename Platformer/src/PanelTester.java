@@ -36,7 +36,7 @@ public class PanelTester implements ActionListener, KeyListener {
 		jerry.diag = true;
 		jerry.face = 3;
 		gary = new GJerald(this, g);
-		gary.setPos(452, 398);
+		gary.setPos(445, 390);
 		gary.diag = true;
 		gary.face = 0;
 		ni = new Ammu(this, g); ne = new Ammu(this, g); na = new Ammu(this, g); no = new Ammu(this, g); nu = new Ammu(this, g);
