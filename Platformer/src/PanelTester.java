@@ -20,9 +20,10 @@ public class PanelTester implements ActionListener, KeyListener {
 	public static Ammu ni, ne, na, no, nu;
 	public static Ammu mi, me, ma, mo, mu;
 	public int countAmmu = 0;
-	public static Barry a, b, c, d;
-	public Barry[] bushel = {a, b, c, d};
+	public static Barry a, b, c, d, e, f, h, i, j;
+	public Barry[] bushel = {a, b, c, d, e, f, h, i, j};
 	private BufferedImage backgroundImg;
+	public static boolean end = false;
 	
 	public PanelTester() {
 		pane = new DrawingPanel(512, 448);
@@ -31,6 +32,11 @@ public class PanelTester implements ActionListener, KeyListener {
 		b = new Barry(this, g, 0, 20, 20, 428); bushel[1] = b;
 		c = new Barry(this, g, 20, 428, 492, 20); bushel[2] = c;
 		d = new Barry(this, g, 492, 20, 20, 408); bushel[3] = d;
+		e = new Barry(this, g, 100, 87, 20, 260); bushel[4] = e;
+		f = new Barry(this, g, 392, 87, 20, 260); bushel[5] = f;
+		h = new Barry(this, g, 206, 244, 40, 40); bushel[6] = h;
+		i = new Barry(this, g, 300, 187, 40, 40); bushel[7] = i;
+		j = new Barry(this, g, 180, 121, 40, 40); bushel[8] = j;
 		jerry = new GJerald(this, g);
 		jerry.setPos(30, 30);
 		jerry.diag = true;
@@ -193,14 +199,21 @@ public class PanelTester implements ActionListener, KeyListener {
 		
 	}
 	
-	public void draw() {	
+	public void draw() {
 		g.drawImage(backgroundImg, 0, 0, null);
+		for (int i=0; i<bushel.length; i++) {
+			Barry temp = bushel[i];
+			temp.draw();
+		}
+		if (end == true) {
+			String winner;
+			if (jerry.dieCount != 0) {	winner = "Jerry";	}
+			else {	winner = "Gary";	}
+			System.out.println("A WINNER IS YOU,");
+			System.out.println(winner);
+		}
 		jerry.draw();
 		gary.draw();
-		a.draw();
-		b.draw();
-		c.draw();
-		d.draw();
 		if (jerry.dieCount == 0) {
 			ni.draw(); ne.draw(); na.draw(); no.draw(); nu.draw();
 		}

@@ -165,11 +165,14 @@ public class GJerald {
 		if (dieCount <= 5) {
 			double a = xval, b = yval;
 			g.drawImage(death[dieCount-1], (int) a, (int) b, null);
+			if (deathCoolDown != 0) {	deathCoolDown--;	}
+			else {	
+				deathCoolDown = 100;
+				dieCount++;
+			}
 		}
-		if (deathCoolDown != 0) {	deathCoolDown--;	}
-		else {	
-			deathCoolDown = 100;
-			dieCount++;
+		else if (dieCount > 5) {
+			tester.end = true;
 		}
 	}
 

@@ -8,9 +8,9 @@ public class AudioApplet extends JApplet {
 	public class Sound {
 		private AudioClip song;
 		private URL songPath;
-		Sound ("TankFiring.wav") {
+		Sound (String filename) {
 			try {
-				songPath = new URL(getCodeBase(), "TankFiring.way");
+				songPath = new URL(getCodeBase(), filename);
 			}
 		}
 	}
