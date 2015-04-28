@@ -83,7 +83,7 @@ public class PanelTester implements ActionListener, KeyListener {
         int num = 0;  
         for (int i = 0; i < 16; i++) {  
             for (int j = 0; j < 16; j++) {  
-                finalImg.createGraphics().drawImage(imgs[(int) Math.random()*10], 32 * j, 28 * i, null);  
+                finalImg.createGraphics().drawImage(imgs[(int) Math.random()*10%3], 32 * j, 28 * i, null);  
                 num++;  
             }  
         } 
