@@ -23,6 +23,8 @@ public class PanelTester implements ActionListener, KeyListener {
 	public static Barry a, b, c, d, e, f, h, i, j;
 	public Barry[] bushel = {a, b, c, d, e, f, h, i, j};
 	private BufferedImage backgroundImg;
+	BufferedImage gvictory;
+	BufferedImage bvictory;
 	public static boolean end = false;
 	
 	public PanelTester() {
@@ -47,6 +49,14 @@ public class PanelTester implements ActionListener, KeyListener {
 		gary.face = 0;
 		ni = new Ammu(this, g); ne = new Ammu(this, g); na = new Ammu(this, g); no = new Ammu(this, g); nu = new Ammu(this, g);
 		mi = new Ammu(this, g); me = new Ammu(this, g); ma = new Ammu(this, g); mo = new Ammu(this, g); mu = new Ammu(this, g);
+		try {
+			gvictory = ImageIO.read(getClass().getResource("GreenVictory.png"));
+			bvictory = ImageIO.read(getClass().getResource("BlueVictory.png"));
+		} catch (IOException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		
 		
 		initTimer();
 		JPanel panel = pane.getPanel();
@@ -207,17 +217,13 @@ public class PanelTester implements ActionListener, KeyListener {
 		}
 		if (end == true) {
 			String winner;
-			if (jerry.dieCount != 0) {	winner = "Jerry";	}
-			else {	winner = "Gary";	}
-			System.out.println("A WINNER IS YOU,");
-			System.out.println(winner);
+			if (gary.dieCount != 0) {	g.drawImage(gvictory, 0, 0, null);	}
+			else if (jerry.dieCount != 0) {	g.drawImage(bvictory, 0, 0, null);	}
 		}
-		jerry.draw();
-		gary.draw();
-		if (jerry.dieCount == 0) {
+		else {
+			jerry.draw();
+			gary.draw();
 			ni.draw(); ne.draw(); na.draw(); no.draw(); nu.draw();
-		}
-		if (gary.dieCount == 0) {
 			mi.draw(); me.draw(); ma.draw(); mo.draw(); mu.draw();
 		}
 	}
