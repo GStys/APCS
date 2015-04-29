@@ -19,6 +19,8 @@ public class PanelTester implements ActionListener, KeyListener {
 	public static GJerald jerry;
 	public static Ammu ni, ne, na, no, nu;
 	public static Ammu mi, me, ma, mo, mu;
+	public static Ammu[] jmmu = {ni, ne, na, no, nu};
+	public static Ammu[] gmmu = {mi, me, ma, mo, mu};
 	public int countAmmu = 0;
 	public static Barry a, b, c, d, e, f, h, i, j, k, l, m, n, o, p, q, r, s, tt, u, v, w, x, y, z, aa;
 	public Barry[] bushel = {a, b, c, d, e, f, h, i, j, k, l, m, n, o, p, q, r, s, tt, u, v, w, x, y, z, aa };
@@ -57,15 +59,17 @@ public class PanelTester implements ActionListener, KeyListener {
 		z = new Barry(this, g, 320, 207, 20, 20, 2); bushel[24] = z;
 		aa = new Barry(this, g, 200, 141, 20, 20, 2); bushel[25] = aa;
 		jerry = new GJerald(this, g, 0);
-		jerry.setPos(30, 30);
-		jerry.diag = true;
-		jerry.face = 3;
+		jerry.firstx = 30; jerry.firsty = 30;
+		jerry.firstd = 3;
+		jerry.reset();
 		gary = new GJerald(this, g, 1);
-		gary.setPos(445, 390);
-		gary.diag = true;
-		gary.face = 0;
+		gary.firstx = 445; gary.firsty = 390;
+		gary.firstd = 0;
+		gary.reset();
 		ni = new Ammu(this, g); ne = new Ammu(this, g); na = new Ammu(this, g); no = new Ammu(this, g); nu = new Ammu(this, g);
 		mi = new Ammu(this, g); me = new Ammu(this, g); ma = new Ammu(this, g); mo = new Ammu(this, g); mu = new Ammu(this, g);
+		gmmu[0] = ni; gmmu[1] = ne; gmmu[2] = na; gmmu[3] = no; gmmu[4] = nu;
+		jmmu[0] = mi; jmmu[1] = me; jmmu[2] = ma; jmmu[3] = mo; jmmu[4] = mu;
 		try {
 			gvictory = ImageIO.read(getClass().getResource("GreenVictory.png"));
 			bvictory = ImageIO.read(getClass().getResource("BlueVictory.png"));
@@ -151,30 +155,16 @@ public class PanelTester implements ActionListener, KeyListener {
 		if (e.getKeyCode() == 39) {	jerry.right = true;	}
 		if (e.getKeyCode() == 40) {	jerry.down = true;	}
 		if (e.getKeyCode() == 47) {
-			if (ni.checkSelf() == false) {
-				ni.setPos(jerry.getBarrelX(), jerry.getBarrelY());
-				ni.wreckSelf();
-				ni.setFace(jerry.face);
-			}
-			else if (ne.checkSelf() == false) {
-				ne.setPos(jerry.getBarrelX(), jerry.getBarrelY());
-				ne.wreckSelf();
-				ne.setFace(jerry.face);
-			}
-			else if (na.checkSelf() == false) {
-				na.setPos(jerry.getBarrelX(), jerry.getBarrelY());
-				na.wreckSelf();
-				na.setFace(jerry.face);
-			}
-			else if (no.checkSelf() == false) {
-				no.setPos(jerry.getBarrelX(), jerry.getBarrelY());
-				no.wreckSelf();
-				no.setFace(jerry.face);
-			}
-			else if (nu.checkSelf() == false) {
-				nu.setPos(jerry.getBarrelX(), jerry.getBarrelY());
-				nu.wreckSelf();
-				nu.setFace(jerry.face);
+			int p=0;
+			while (p<jmmu.length) {
+				Ammu temp = jmmu[p];
+				if (temp.checkSelf() == false) {
+					temp.setPos(jerry.getBarrelX(), jerry.getBarrelY());
+					temp.wreckSelf();
+					temp.setFace(jerry.face);
+					break;
+				}
+				else {	p++;	}
 			}
 		}
 		if (e.getKeyCode() == 65) {	gary.left = true;	}
@@ -182,32 +172,19 @@ public class PanelTester implements ActionListener, KeyListener {
 		if (e.getKeyCode() == 68) {	gary.right = true;	}
 		if (e.getKeyCode() == 83) {	gary.down = true;	}
 		if (e.getKeyCode() == 32) {
-			if (mi.checkSelf() == false) {
-				mi.setPos(gary.getBarrelX(), gary.getBarrelY());
-				mi.wreckSelf();
-				mi.setFace(gary.face);
-			}
-			else if (me.checkSelf() == false) {
-				me.setPos(gary.getBarrelX(), gary.getBarrelY());
-				me.wreckSelf();
-				me.setFace(gary.face);
-			}
-			else if (ma.checkSelf() == false) {
-				ma.setPos(gary.getBarrelX(), gary.getBarrelY());
-				ma.wreckSelf();
-				ma.setFace(gary.face);
-			}
-			else if (mo.checkSelf() == false) {
-				mo.setPos(gary.getBarrelX(), gary.getBarrelY());
-				mo.wreckSelf();
-				mo.setFace(gary.face);
-			}
-			else if (mu.checkSelf() == false) {
-				mu.setPos(gary.getBarrelX(), gary.getBarrelY());
-				mu.wreckSelf();
-				mu.setFace(gary.face);
+			int q=0;
+			while (q<gmmu.length) {
+				Ammu temp = gmmu[q];
+				if (temp.checkSelf() == false) {
+					temp.setPos(gary.getBarrelX(), gary.getBarrelY());
+					temp.wreckSelf();
+					temp.setFace(gary.face);
+					break;
+				}
+				else {	q++;	}
 			}
 		}
+		if (e.getKeyCode() == 82) {	restart();	}
 		// TODO Auto-generated method stub
 		
 	}
@@ -226,6 +203,16 @@ public class PanelTester implements ActionListener, KeyListener {
 		
 	}
 	
+	public void restart() {
+		end = false;
+		jerry.reset();
+		gary.reset();
+		for (int i=0; i<5; i++) {
+			jmmu[i].wreckSelf();
+			gmmu[i].wreckSelf();
+		}
+	}
+	
 	public void draw() {
 		g.drawImage(backgroundImg, 0, 0, null);
 		for (int i=0; i<bushel.length; i++) {
@@ -233,7 +220,6 @@ public class PanelTester implements ActionListener, KeyListener {
 			temp.draw();
 		}
 		if (end == true) {
-			String winner;
 			if (gary.dieCount != 0) {	g.drawImage(gvictory, 0, 0, null);	}
 			else if (jerry.dieCount != 0) {	g.drawImage(bvictory, 0, 0, null);	}
 		}

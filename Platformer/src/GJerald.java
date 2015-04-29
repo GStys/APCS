@@ -11,6 +11,9 @@ public class GJerald {
 	private PanelTester tester;
 	private int player;
 	public int face = 39;
+	public  double firstx;
+	public  double firsty;
+	public  double firstd;
 	public double xval;
 	public double rbound;
 	public double yval;
@@ -206,6 +209,14 @@ public class GJerald {
 		else if (dieCount > 5) {
 			tester.end = true;
 		}
+	}
+	
+	public void reset() {
+		dieCount = 0;
+		face = (int) firstd;
+		diag = true;
+		setPos(firstx, firsty);
+		wreckSelf();
 	}
 
 	public void draw() {
