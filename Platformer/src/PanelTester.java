@@ -225,6 +225,6 @@ public class PanelTester implements ActionListener, KeyListener {
 			gary.draw();
 			ni.draw(); ne.draw(); na.draw(); no.draw(); nu.draw();
 			mi.draw(); me.draw(); ma.draw(); mo.draw(); mu.draw();
-		}
+		} 
 	}
 }
