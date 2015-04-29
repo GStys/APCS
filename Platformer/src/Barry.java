@@ -11,11 +11,11 @@ public class Barry {
 	public int width, height;
 	BufferedImage skin;
 	
-	public Barry(PanelTester tester, Graphics g, int x, int y, int w, int h) {
+	public Barry(PanelTester tester, Graphics g, int x, int y, int w, int h, int type) {
 		this.tester = tester;
 		this.g = g;
 		try {
-			skin = ImageIO.read(getClass().getResource("barry1.png"));
+			skin = ImageIO.read(getClass().getResource("barry"+type+".png"));
 		} catch (IOException e) {
 			e.printStackTrace();
 		}
