@@ -42,12 +42,12 @@ public class PanelTester implements ActionListener, KeyListener {
 		i = new Barry(this, g, 300, 187, 40, 40); bushel[7] = i;
 		j = new Barry(this, g, 180, 121, 40, 40); bushel[8] = j;
 		jerry = new GJerald(this, g, 0);
-		jerry.firstx = 30; jerry.firsty = 30;
-		jerry.firstd = 3;
+		jerry.firstx = 445; jerry.firsty = 390;
+		jerry.firstd = 0;
 		jerry.reset();
 		gary = new GJerald(this, g, 1);
-		gary.firstx = 445; gary.firsty = 390;
-		gary.firstd = 0;
+		gary.firstx = 30; gary.firsty = 30;
+		gary.firstd = 3;
 		gary.reset();
 		ni = new Ammu(this, g); ne = new Ammu(this, g); na = new Ammu(this, g); no = new Ammu(this, g); nu = new Ammu(this, g);
 		mi = new Ammu(this, g); me = new Ammu(this, g); ma = new Ammu(this, g); mo = new Ammu(this, g); mu = new Ammu(this, g);
