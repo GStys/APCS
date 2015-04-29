@@ -171,10 +171,10 @@ public class GJerald {
 		if ((up == true) && (right == true)) {	face = 1; diag = true;	}
 		if ((left == true) && (down == true)) {	face = 2; diag = true;	}
 		if ((down == true) && (right == true)) {	face = 3; diag = true;	}
-		if (direction == 39) {	moveTo(xval+0.1, yval);	}
-		if (direction == 38) {	moveTo(xval, yval-0.1);	}
-		if (direction == 37) {	moveTo(xval-0.1, yval);	}
-		if (direction == 40) {	moveTo(xval, yval+0.1 );	}
+		if (direction == 39) {	moveTo(xval+0.3, yval);	}
+		if (direction == 38) {	moveTo(xval, yval-0.3);	}
+		if (direction == 37) {	moveTo(xval-0.3, yval);	}
+		if (direction == 40) {	moveTo(xval, yval+0.3 );	}
 	}
 	
 	public boolean checkBarry(Barry b, double x, double y) {
