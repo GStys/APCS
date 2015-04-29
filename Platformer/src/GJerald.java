@@ -212,11 +212,11 @@ public class GJerald {
 	}
 	
 	public void reset() {
+		dieCount = 0;
 		face = (int) firstd;
 		diag = true;
 		setPos(firstx, firsty);
 		wreckSelf();
-		dieCount = 0;
 	}
 
 	public void draw() {

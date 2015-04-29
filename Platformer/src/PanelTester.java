@@ -187,6 +187,7 @@ public class PanelTester implements ActionListener, KeyListener {
 	}
 	
 	public void restart() {
+		end = false;
 		jerry.reset();
 		gary.reset();
 		for (int i=0; i<5; i++) {
