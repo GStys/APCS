@@ -11,9 +11,9 @@ public class GJerald {
 	private PanelTester tester;
 	private int player;
 	public int face = 39;
-	public static double firstx;
-	public static double firsty;
-	public static double firstd;
+	public  double firstx;
+	public  double firsty;
+	public  double firstd;
 	public double xval;
 	public double rbound;
 	public double yval;
