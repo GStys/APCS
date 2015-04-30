@@ -184,7 +184,7 @@ public class PanelTester implements ActionListener, KeyListener {
 				else {	q++;	}
 			}
 		}
-		if (e.getKeyCode() == 82) {	restart();	}
+		if ((e.getKeyCode() == 82) && (end == true)) {	restart();	}
 		// TODO Auto-generated method stub
 		
 	}
