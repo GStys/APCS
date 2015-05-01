@@ -102,10 +102,10 @@ public class Ammu {
 	}
 	
 	public void moveLine(int direction) {
-		if (direction == 39) {	moveTo(xval+0.5, yval);	}
-		if (direction == 38) {	moveTo(xval, yval-0.5);	}
-		if (direction == 37) {	moveTo(xval-0.5, yval);	}
-		if (direction == 40) {	moveTo(xval, yval+0.5);	}
+		if (direction == 39) {	moveTo(xval+0.9, yval);	}
+		if (direction == 38) {	moveTo(xval, yval-0.9);	}
+		if (direction == 37) {	moveTo(xval-0.9, yval);	}
+		if (direction == 40) {	moveTo(xval, yval+0.9);	}
 	}
 	
 	public void draw() {

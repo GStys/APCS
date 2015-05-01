@@ -154,7 +154,7 @@ public class PanelTester implements ActionListener, KeyListener {
 		if (e.getKeyCode() == 38) {	jerry.up = true;	}
 		if (e.getKeyCode() == 39) {	jerry.right = true;	}
 		if (e.getKeyCode() == 40) {	jerry.down = true;	}
-		if (e.getKeyCode() == 47) {
+		if ((e.getKeyCode() == 47) && (jerry.dieCount == 0)) {
 			int p=0;
 			while (p<jmmu.length) {
 				Ammu temp = jmmu[p];
@@ -171,7 +171,7 @@ public class PanelTester implements ActionListener, KeyListener {
 		if (e.getKeyCode() == 87) {	gary.up = true;	}
 		if (e.getKeyCode() == 68) {	gary.right = true;	}
 		if (e.getKeyCode() == 83) {	gary.down = true;	}
-		if (e.getKeyCode() == 32) {
+		if ((e.getKeyCode() == 32) && (gary.dieCount == 0)) {
 			int q=0;
 			while (q<gmmu.length) {
 				Ammu temp = gmmu[q];
@@ -220,7 +220,8 @@ public class PanelTester implements ActionListener, KeyListener {
 			temp.draw();
 		}
 		if (end == true) {
-			if (gary.dieCount != 0) {	g.drawImage(gvictory, 0, 0, null);	}
+			if ((gary.dieCount != 0) && (jerry.dieCount != 0)) {	System.out.println("Tie");	}
+			else if (gary.dieCount != 0) {	g.drawImage(gvictory, 0, 0, null);	}
 			else if (jerry.dieCount != 0) {	g.drawImage(bvictory, 0, 0, null);	}
 		}
 		else {
