@@ -10,10 +10,13 @@ public class Ammu {
 	public double width, height;
 	public double xval, yval;
 	public double rbound, dbound;
+	public int bounceCount = 5;
 	private PanelTester tester; 
 	private Graphics g;
 	public boolean left = false, up = false, right = false, down = false;
 	BufferedImage bullet;
+	BufferedImage[] flash;
+	BufferedImage[] flashd;
 	
 	public Ammu(PanelTester tester, Graphics g) {
 		this.g = g;
@@ -22,6 +25,10 @@ public class Ammu {
 		height = 10;
 		try {
 			bullet = ImageIO.read(getClass().getResource("projectile.png"));
+			for (int i=0; i<4; i++) {
+				flash[i] = ImageIO.read(getClass().getResource("Muzzleflash-" + (i+37) + ".png"));
+				flashd[i] = ImageIO.read(getClass().getResource("Muzzleflash-" + (i) + ".png"));
+			}
 		} catch (IOException e) {
 			e.printStackTrace();
 		}
@@ -84,7 +91,21 @@ public class Ammu {
 	public void moveTo(double x, double y) {
 		for (int i=0; i<tester.bushel.length; i++) {
 			if (checkBarry(tester.bushel[i], x, y) == true) {
-				wreckSelf();
+				if (bounceCount <= 0) {
+					bounceCount = 5;
+					wreckSelf();
+					return;
+				}
+				if ((y > tester.bushel[i].yval) && ((y+height) < (tester.bushel[i].yval + tester.bushel[i].height))) {
+					if (left == true) {	left = false; right = true;	}
+					else if (right == true) {	right = false; left = true;	}
+					bounceCount--;
+				}
+				if ((x > tester.bushel[i].xval) && ((x+width) < (tester.bushel[i].xval + tester.bushel[i].width))) {
+					if (up == true) {	up = false; down = true;	}
+					else if (down == true) {	down = false; up = true;	}
+					bounceCount--;
+				}
 				return;
 			}
 		}
@@ -102,10 +123,10 @@ public class Ammu {
 	}
 	
 	public void moveLine(int direction) {
-		if (direction == 39) {	moveTo(xval+0.9, yval);	}
-		if (direction == 38) {	moveTo(xval, yval-0.9);	}
-		if (direction == 37) {	moveTo(xval-0.9, yval);	}
-		if (direction == 40) {	moveTo(xval, yval+0.9);	}
+		if (direction == 39) {	moveTo(xval+0.7, yval);	}
+		if (direction == 38) {	moveTo(xval, yval-0.7);	}
+		if (direction == 37) {	moveTo(xval-0.7, yval);	}
+		if (direction == 40) {	moveTo(xval, yval+0.7);	}
 	}
 	
 	public void draw() {
