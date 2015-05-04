@@ -162,6 +162,7 @@ public class PanelTester implements ActionListener, KeyListener {
 					temp.setPos(jerry.getBarrelX(), jerry.getBarrelY());
 					temp.wreckSelf();
 					temp.setFace(jerry.face);
+					temp.muzzFlash();
 					break;
 				}
 				else {	p++;	}
@@ -179,6 +180,7 @@ public class PanelTester implements ActionListener, KeyListener {
 					temp.setPos(gary.getBarrelX(), gary.getBarrelY());
 					temp.wreckSelf();
 					temp.setFace(gary.face);
+					temp.muzzFlash();
 					break;
 				}
 				else {	q++;	}
