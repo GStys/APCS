@@ -23,6 +23,8 @@ public class Ammu {
 		this.tester = tester;
 		width = 10;
 		height = 10;
+		flash = new BufferedImage[4];
+		flashd = new BufferedImage[4];
 		try {
 			bullet = ImageIO.read(getClass().getResource("projectile.png"));
 			for (int i=0; i<4; i++) {
