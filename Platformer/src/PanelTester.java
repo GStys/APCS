@@ -59,7 +59,7 @@ public class PanelTester implements ActionListener, KeyListener {
 		z = new Barry(this, g, 320, 207, 20, 20, 2); bushel[24] = z;
 		aa = new Barry(this, g, 200, 141, 20, 20, 2); bushel[25] = aa;
 		jerry = new GJerald(this, g, 0);
-		jerry.firstx = 445; jerry.firsty = 390;
+		jerry.firstx = 450; jerry.firsty = 390;
 		jerry.firstd = 0;
 		jerry.reset();
 		gary = new GJerald(this, g, 1);
