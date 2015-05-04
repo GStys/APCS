@@ -19,8 +19,8 @@ public class PanelTester implements ActionListener, KeyListener {
 	public static GJerald jerry;
 	public static Ammu ni, ne, na, no, nu;
 	public static Ammu mi, me, ma, mo, mu;
-	public static Ammu[] jmmu = {ni, ne, na, no, nu};
-	public static Ammu[] gmmu = {mi, me, ma, mo, mu};
+	public static Ammu[] jquiver = {ni, ne, na, no, nu};
+	public static Ammu[] gquiver = {mi, me, ma, mo, mu};
 	public int countAmmu = 0;
 	public static Barry a, b, c, d, e, f, h, i, j, k, l, m, n, o, p, q, r, s, tt, u, v, w, x, y, z, aa;
 	public Barry[] bushel = {a, b, c, d, e, f, h, i, j, k, l, m, n, o, p, q, r, s, tt, u, v, w, x, y, z, aa };
@@ -68,8 +68,8 @@ public class PanelTester implements ActionListener, KeyListener {
 		gary.reset();
 		ni = new Ammu(this, g); ne = new Ammu(this, g); na = new Ammu(this, g); no = new Ammu(this, g); nu = new Ammu(this, g);
 		mi = new Ammu(this, g); me = new Ammu(this, g); ma = new Ammu(this, g); mo = new Ammu(this, g); mu = new Ammu(this, g);
-		gmmu[0] = ni; gmmu[1] = ne; gmmu[2] = na; gmmu[3] = no; gmmu[4] = nu;
-		jmmu[0] = mi; jmmu[1] = me; jmmu[2] = ma; jmmu[3] = mo; jmmu[4] = mu;
+		gquiver[0] = ni; gquiver[1] = ne; gquiver[2] = na; gquiver[3] = no; gquiver[4] = nu;
+		jquiver[0] = mi; jquiver[1] = me; jquiver[2] = ma; jquiver[3] = mo; jquiver[4] = mu;
 		try {
 			gvictory = ImageIO.read(getClass().getResource("GreenVictory.png"));
 			bvictory = ImageIO.read(getClass().getResource("BlueVictory.png"));
@@ -156,8 +156,8 @@ public class PanelTester implements ActionListener, KeyListener {
 		if (e.getKeyCode() == 40) {	jerry.down = true;	}
 		if ((e.getKeyCode() == 47) && (jerry.dieCount == 0)) {
 			int p=0;
-			while (p<jmmu.length) {
-				Ammu temp = jmmu[p];
+			while (p<jquiver.length) {
+				Ammu temp = jquiver[p];
 				if (temp.checkSelf() == false) {
 					temp.setPos(jerry.getBarrelX(), jerry.getBarrelY());
 					temp.wreckSelf();
@@ -173,8 +173,8 @@ public class PanelTester implements ActionListener, KeyListener {
 		if (e.getKeyCode() == 83) {	gary.down = true;	}
 		if ((e.getKeyCode() == 32) && (gary.dieCount == 0)) {
 			int q=0;
-			while (q<gmmu.length) {
-				Ammu temp = gmmu[q];
+			while (q<gquiver.length) {
+				Ammu temp = gquiver[q];
 				if (temp.checkSelf() == false) {
 					temp.setPos(gary.getBarrelX(), gary.getBarrelY());
 					temp.wreckSelf();
@@ -208,8 +208,8 @@ public class PanelTester implements ActionListener, KeyListener {
 		jerry.reset();
 		gary.reset();
 		for (int i=0; i<5; i++) {
-			jmmu[i].wreckSelf();
-			gmmu[i].wreckSelf();
+			jquiver[i].wreckSelf();
+			gquiver[i].wreckSelf();
 		}
 	}
 	

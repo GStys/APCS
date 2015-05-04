@@ -10,7 +10,7 @@ public class Ammu {
 	public double width, height;
 	public double xval, yval;
 	public double rbound, dbound;
-	public int bounceCount = 5;
+	public int bounceCount = 4;
 	private PanelTester tester; 
 	private Graphics g;
 	public boolean left = false, up = false, right = false, down = false;
@@ -94,16 +94,16 @@ public class Ammu {
 		for (int i=0; i<tester.bushel.length; i++) {
 			if (checkBarry(tester.bushel[i], x, y) == true) {
 				if (bounceCount <= 0) {
-					bounceCount = 5;
+					bounceCount = 4;
 					wreckSelf();
 					return;
 				}
-				if ((y > tester.bushel[i].yval) && ((y+height) < (tester.bushel[i].yval + tester.bushel[i].height))) {
+				if (((y+5) >= tester.bushel[i].yval) && ((y+height-5) <= (tester.bushel[i].yval + tester.bushel[i].height))) {
 					if (left == true) {	left = false; right = true;	}
 					else if (right == true) {	right = false; left = true;	}
 					bounceCount--;
 				}
-				else if ((x > tester.bushel[i].xval) && ((x+width) < (tester.bushel[i].xval + tester.bushel[i].width))) {
+				else if (((x+5) >= tester.bushel[i].xval) && ((x+width-5) <= (tester.bushel[i].xval + tester.bushel[i].width))) {
 					if (up == true) {	up = false; down = true;	}
 					else if (down == true) {	down = false; up = true;	}
 					bounceCount--;
