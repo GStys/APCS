@@ -103,9 +103,16 @@ public class Ammu {
 					else if (right == true) {	right = false; left = true;	}
 					bounceCount--;
 				}
-				if ((x > tester.bushel[i].xval) && ((x+width) < (tester.bushel[i].xval + tester.bushel[i].width))) {
+				else if ((x > tester.bushel[i].xval) && ((x+width) < (tester.bushel[i].xval + tester.bushel[i].width))) {
 					if (up == true) {	up = false; down = true;	}
 					else if (down == true) {	down = false; up = true;	}
+					bounceCount--;
+				}
+				else {
+					if (up == true) {	up = false; down = true;	}
+					else if (down == true) {	down = false; up = true;	}
+					if (left == true) {	left = false; right = true;	}
+					else if (right == true) {	right = false; left = true;	}
 					bounceCount--;
 				}
 				return;
