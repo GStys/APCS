@@ -77,6 +77,18 @@ public class Ammu {
 		return false;
 	}
 	
+	public void muzzFlash(){
+		if(left == true){double a = xval, b = yval; g.drawImage(flash[0], (int) a, (int) b, null); System.out.println("bang!");};
+		if(up == true){double a = xval, b = yval; g.drawImage(flash[1], (int) a, (int) b, null);System.out.println("bang!");};
+		if(right == true){double a = xval, b = yval; g.drawImage(flash[2], (int) a, (int) b, null);System.out.println("bang!");};
+		if(down == true){double a = xval, b = yval; g.drawImage(flash[3], (int) a, (int) b, null);System.out.println("bang!");};
+		if(left == true && up == true){double a = xval, b = yval; g.drawImage(flashd[0], (int) a, (int) b, null);System.out.println("bang!");};
+		if(up == true && right == true){double a = xval, b = yval; g.drawImage(flashd[1], (int) a, (int) b, null);System.out.println("bang!");};
+		if(right == true && down == true){double a = xval, b = yval; g.drawImage(flashd[2], (int) a, (int) b, null);System.out.println("bang!");};
+		if(down == true && left == true){double a = xval, b = yval; g.drawImage(flashd[3], (int) a, (int) b, null);System.out.println("bang!");};
+	}
+	
+	
 	public void setPos(double x, double y) {
 		xval = x;
 		yval = y;
