@@ -13,10 +13,14 @@ public class Ammu {
 	public int bounceCount = 3;
 	private PanelTester tester; 
 	private Graphics g;
+	public int face;
 	public boolean left = false, up = false, right = false, down = false;
 	BufferedImage bullet;
 	BufferedImage[] flash;
 	BufferedImage[] flashd;
+	public int flashCounter = 0;
+	double a, b;
+	Image theFlash;
 	
 	public Ammu(PanelTester tester, Graphics g) {
 		this.g = g;
@@ -37,14 +41,14 @@ public class Ammu {
 	}
 	
 	public void setFace(int direction) {
-		if (direction == 37) {	left = true;	}
-		if (direction == 38) {	up = true;	}
-		if (direction == 39) {	right = true;	}
-		if (direction == 40) {	down = true;	}
-		if (direction == 0) {	left = true; up = true;	}
-		if (direction == 1) {	up = true; right = true;	}
-		if (direction == 2) {	left = true; down = true;	}
-		if (direction == 3) {	right = true; down = true;	}
+		if (direction == 37) {	face = 37; left = true;	}
+		if (direction == 38) {	face = 38; up = true;	}
+		if (direction == 39) {	face = 39; right = true;	}
+		if (direction == 40) {	face = 40; down = true;	}
+		if (direction == 0) {	face = 0; left = true; up = true;	}
+		if (direction == 1) {	face = 1; up = true; right = true;	}
+		if (direction == 2) {	face = 2; left = true; down = true;	}
+		if (direction == 3) {	face = 3; right = true; down = true;	}
 	}
 	
 	public boolean checkSelf() {
@@ -77,15 +81,21 @@ public class Ammu {
 		return false;
 	}
 	
-	public void muzzFlash(){
-		if(left == true){double a = xval, b = yval; g.drawImage(flash[0], (int) a, (int) b, null); System.out.println("bang!");};
-		if(up == true){double a = xval, b = yval; g.drawImage(flash[1], (int) a, (int) b, null);System.out.println("bang!");};
-		if(right == true){double a = xval, b = yval; g.drawImage(flash[2], (int) a, (int) b, null);System.out.println("bang!");};
-		if(down == true){double a = xval, b = yval; g.drawImage(flash[3], (int) a, (int) b, null);System.out.println("bang!");};
-		if(left == true && up == true){double a = xval, b = yval; g.drawImage(flashd[0], (int) a, (int) b, null);System.out.println("bang!");};
-		if(up == true && right == true){double a = xval, b = yval; g.drawImage(flashd[1], (int) a, (int) b, null);System.out.println("bang!");};
-		if(right == true && down == true){double a = xval, b = yval; g.drawImage(flashd[2], (int) a, (int) b, null);System.out.println("bang!");};
-		if(down == true && left == true){double a = xval, b = yval; g.drawImage(flashd[3], (int) a, (int) b, null);System.out.println("bang!");};
+	public void muzzFlash() {
+		if (flashCounter > 0) {
+			if (face == 0) {	a = firstx-27; b = firsty-25;	}
+			if (face == 1) {	a = firstx+4; b = firsty-25;	}
+			if (face == 2) {	a = firstx-27; b = firsty+3;	}
+			if (face == 3) {	a = firstx+4; b = firsty+4;	}
+			if (face == 37) {	a = firstx-20; b = firsty-11;	}
+			if (face == 38) {	a = firstx-11; b = firsty-17;	}
+			if (face == 39) {	a = firstx; b = firsty-9;	}
+			if (face == 40) {	a = firstx-11; b = firsty-2;	}
+			if (face > 4) {	theFlash = flash[face-37];	}
+			else {	theFlash = flashd[face];	}
+			g.drawImage(theFlash, (int) a, (int) b, null);
+			flashCounter--;
+		}
 	}
 	
 	
@@ -151,6 +161,7 @@ public class Ammu {
 	}
 	
 	public void draw() {
+		muzzFlash();
 		if (left == true) {	moveLine(37); place();	}
 		if (up == true) {	moveLine(38); place();	}
 		if (down == true) {	moveLine(40); place();	}

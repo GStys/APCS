@@ -160,9 +160,10 @@ public class PanelTester implements ActionListener, KeyListener {
 				Ammu temp = jquiver[p];
 				if (temp.checkSelf() == false) {
 					temp.setPos(jerry.getBarrelX(), jerry.getBarrelY());
+					temp.firstx = jerry.getBarrelX(); temp.firsty = jerry.getBarrelY();
 					temp.wreckSelf();
 					temp.setFace(jerry.face);
-					temp.muzzFlash();
+					temp.flashCounter = 25;
 					break;
 				}
 				else {	p++;	}
@@ -178,9 +179,10 @@ public class PanelTester implements ActionListener, KeyListener {
 				Ammu temp = gquiver[q];
 				if (temp.checkSelf() == false) {
 					temp.setPos(gary.getBarrelX(), gary.getBarrelY());
+					temp.firstx = gary.getBarrelX(); temp.firsty = gary.getBarrelY();
 					temp.wreckSelf();
 					temp.setFace(gary.face);
-					temp.muzzFlash();
+					temp.flashCounter = 25;
 					break;
 				}
 				else {	q++;	}
@@ -229,6 +231,10 @@ public class PanelTester implements ActionListener, KeyListener {
 		else {
 			jerry.draw();
 			gary.draw();
+			for (int i=0; i<5; i++) {
+				gquiver[i].firstx = gary.getBarrelX(); gquiver[i].firsty = gary.getBarrelY();
+				jquiver[i].firstx = jerry.getBarrelX(); jquiver[i].firsty = jerry.getBarrelY();
+			}
 			ni.draw(); ne.draw(); na.draw(); no.draw(); nu.draw();
 			mi.draw(); me.draw(); ma.draw(); mo.draw(); mu.draw();
 		} 
