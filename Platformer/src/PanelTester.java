@@ -27,6 +27,7 @@ public class PanelTester implements ActionListener, KeyListener {
 	private BufferedImage backgroundImg;
 	BufferedImage gvictory;
 	BufferedImage bvictory;
+	BufferedImage tieGame;
 	public static boolean end = false;
 	
 	public PanelTester() {
@@ -73,6 +74,7 @@ public class PanelTester implements ActionListener, KeyListener {
 		try {
 			gvictory = ImageIO.read(getClass().getResource("GreenVictory.png"));
 			bvictory = ImageIO.read(getClass().getResource("BlueVictory.png"));
+			tieGame = ImageIO.read(getClass().getResource("TieScreen.png"));
 		} catch (IOException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
@@ -224,7 +226,7 @@ public class PanelTester implements ActionListener, KeyListener {
 			temp.draw();
 		}
 		if (end == true) {
-			if ((gary.dieCount != 0) && (jerry.dieCount != 0)) {	System.out.println("Tie");	}
+			if ((gary.dieCount != 0) && (jerry.dieCount != 0)) {	g.drawImage(tieGame, 0, 0, null);	}
 			else if (gary.dieCount != 0) {	g.drawImage(gvictory, 0, 0, null);	}
 			else if (jerry.dieCount != 0) {	g.drawImage(bvictory, 0, 0, null);	}
 		}
