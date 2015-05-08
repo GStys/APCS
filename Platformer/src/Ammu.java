@@ -115,7 +115,7 @@ public class Ammu {
 	public void moveTo(double x, double y) {
 		for (int i=0; i<tester.bushel.length; i++) {
 			if (checkBarry(tester.bushel[i], x, y) == true) {
-				if (bounceCount <= 0) {
+				if (bounceCount == 0) {
 					bounceCount = 3;
 					wreckSelf();
 					return;

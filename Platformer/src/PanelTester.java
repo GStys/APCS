@@ -3,6 +3,8 @@ import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.awt.event.KeyEvent;
 import java.awt.event.KeyListener;
+import java.awt.event.MouseEvent;
+import java.awt.event.MouseListener;
 import java.awt.image.BufferedImage;
 import java.io.IOException;
 
@@ -10,7 +12,7 @@ import javax.imageio.ImageIO;
 import javax.swing.JPanel;
 import javax.swing.Timer;
 
-public class PanelTester implements ActionListener, KeyListener {
+public class PanelTester implements ActionListener, KeyListener, MouseListener {
 
 	private DrawingPanel pane;
 	private Graphics g;
@@ -25,10 +27,13 @@ public class PanelTester implements ActionListener, KeyListener {
 	public static Barry a, b, c, d, e, f, h, i, j, k, l, m, n, o, p, q, r, s, tt, u, v, w, x, y, z, aa;
 	public Barry[] bushel = {a, b, c, d, e, f, h, i, j, k, l, m, n, o, p, q, r, s, tt, u, v, w, x, y, z, aa };
 	private BufferedImage backgroundImg;
+	BufferedImage titleScreenImage;
 	BufferedImage gvictory;
 	BufferedImage bvictory;
 	BufferedImage tieGame;
 	public static boolean end = false;
+	
+	public static boolean titleOn = true;
 	
 	public PanelTester() {
 		pane = new DrawingPanel(512, 448);
@@ -72,6 +77,7 @@ public class PanelTester implements ActionListener, KeyListener {
 		gquiver[0] = ni; gquiver[1] = ne; gquiver[2] = na; gquiver[3] = no; gquiver[4] = nu;
 		jquiver[0] = mi; jquiver[1] = me; jquiver[2] = ma; jquiver[3] = mo; jquiver[4] = mu;
 		try {
+			titleScreenImage = ImageIO.read(getClass().getResource("TitleScreen.png"));
 			gvictory = ImageIO.read(getClass().getResource("GreenVictory.png"));
 			bvictory = ImageIO.read(getClass().getResource("BlueVictory.png"));
 			tieGame = ImageIO.read(getClass().getResource("TieScreen.png"));
@@ -90,12 +96,14 @@ public class PanelTester implements ActionListener, KeyListener {
 		draw();
 	}
 	
-	public Barry getBarry() {
-		return a;
+	public void initTitle() {
+		g.drawImage(titleScreenImage, 0, 0, null);
+		JPanel p = pane.getPanel();
+		p.addMouseListener(this);
 	}
 	
-	public GJerald getJerry() {
-		return jerry;
+	public void initGame() {
+		titleOn = false;
 	}
 	
 	private void initBackground() {
@@ -135,13 +143,20 @@ public class PanelTester implements ActionListener, KeyListener {
 
 	public static void main(String[] args) {
 		PanelTester tester = new PanelTester();
-
+		tester.initTitle();
 	}
 
 	@Override
 	public void actionPerformed(ActionEvent e) {
 		// TODO Auto-generated method stub
-		draw();
+		
+		if (titleOn) {
+			
+			
+			initGame();
+		} else {
+			draw();
+		}
 	}
 
 	@Override
@@ -205,6 +220,38 @@ public class PanelTester implements ActionListener, KeyListener {
 		if (e.getKeyCode() == 87) {	gary.up = false;	}
 		if (e.getKeyCode() == 68) {	gary.right = false;	}
 		if (e.getKeyCode() == 83) {	gary.down = false;	}
+		// TODO Auto-generated method stub
+		
+	}
+
+	@Override
+	public void mouseClicked(MouseEvent e) {
+		if (titleOn) {
+			// TODO Auto-generated method stub
+		}
+		
+	}
+
+	@Override
+	public void mousePressed(MouseEvent e) {
+		// TODO Auto-generated method stub
+		
+	}
+
+	@Override
+	public void mouseReleased(MouseEvent e) {
+		// TODO Auto-generated method stub
+		
+	}
+
+	@Override
+	public void mouseEntered(MouseEvent e) {
+		// TODO Auto-generated method stub
+		
+	}
+
+	@Override
+	public void mouseExited(MouseEvent e) {
 		// TODO Auto-generated method stub
 		
 	}
