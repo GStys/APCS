@@ -163,7 +163,7 @@ public class PanelTester implements ActionListener, KeyListener {
 					temp.firstx = jerry.getBarrelX(); temp.firsty = jerry.getBarrelY();
 					temp.wreckSelf();
 					temp.setFace(jerry.face);
-					temp.flashCounter = 25;
+					temp.flashCounter = 20;
 					break;
 				}
 				else {	p++;	}
@@ -182,7 +182,7 @@ public class PanelTester implements ActionListener, KeyListener {
 					temp.firstx = gary.getBarrelX(); temp.firsty = gary.getBarrelY();
 					temp.wreckSelf();
 					temp.setFace(gary.face);
-					temp.flashCounter = 25;
+					temp.flashCounter = 20;
 					break;
 				}
 				else {	q++;	}
