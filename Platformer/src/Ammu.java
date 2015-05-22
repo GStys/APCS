@@ -10,11 +10,12 @@ public class Ammu {
 	public double width, height;
 	public double xval, yval;
 	public double rbound, dbound;
-	public int bounceCount = 3;
+	public int bounceCount;
 	private PanelTester tester; 
 	private Graphics g;
 	public int face;
 	public boolean left = false, up = false, right = false, down = false;
+	public int crazy;
 	BufferedImage bullet;
 	BufferedImage[] flash;
 	BufferedImage[] flashd;
@@ -27,6 +28,7 @@ public class Ammu {
 		this.tester = tester;
 		width = 10;
 		height = 10;
+		bounceCount = tester.bouncem;
 		flash = new BufferedImage[4];
 		flashd = new BufferedImage[4];
 		try {
@@ -112,11 +114,15 @@ public class Ammu {
 		g.drawImage(bullet, (int) a, (int) b, null);
 	}
 	
+	public void noBounceCount() {
+		bounceCount = 2;
+	}
+	
 	public void moveTo(double x, double y) {
 		for (int i=0; i<tester.bushel.length; i++) {
 			if (checkBarry(tester.bushel[i], x, y) == true) {
-				if (bounceCount == 0) {
-					bounceCount = 3;
+				if (bounceCount == 3) {
+					bounceCount = 6;
 					wreckSelf();
 					return;
 				}

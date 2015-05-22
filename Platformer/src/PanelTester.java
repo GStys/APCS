@@ -27,17 +27,17 @@ public class PanelTester implements ActionListener, KeyListener, MouseListener {
 	public static Barry a, b, c, d, e, f, h, i, j, k, l, m, n, o, p, q, r, s, tt, u, v, w, x, y, z, aa;
 	public Barry[] bushel = {a, b, c, d, e, f, h, i, j, k, l, m, n, o, p, q, r, s, tt, u, v, w, x, y, z, aa };
 	private BufferedImage backgroundImg;
-	BufferedImage titleScreenImage;
-	BufferedImage gvictory;
-	BufferedImage bvictory;
-	BufferedImage tieGame;
+	public BufferedImage gvictory;
+	public BufferedImage bvictory;
+	public BufferedImage tieGame;
 	public static boolean end = false;
-	
-	public static boolean titleOn = true;
+	public static Title tim;
+	public static int bouncem = 6;
 	
 	public PanelTester() {
 		pane = new DrawingPanel(512, 448);
 		g = pane.getGraphics();
+		tim = new Title(this, g);
 		a = new Barry(this, g, 20, 0, 480, 20, 7); bushel[0] = a;
 		b = new Barry(this, g, 0, 20, 20, 428, 6); bushel[1] = b;
 		c = new Barry(this, g, 20, 428, 492, 20, 8); bushel[2] = c;
@@ -77,7 +77,6 @@ public class PanelTester implements ActionListener, KeyListener, MouseListener {
 		gquiver[0] = ni; gquiver[1] = ne; gquiver[2] = na; gquiver[3] = no; gquiver[4] = nu;
 		jquiver[0] = mi; jquiver[1] = me; jquiver[2] = ma; jquiver[3] = mo; jquiver[4] = mu;
 		try {
-			titleScreenImage = ImageIO.read(getClass().getResource("TitleScreen.png"));
 			gvictory = ImageIO.read(getClass().getResource("GreenVictory.png"));
 			bvictory = ImageIO.read(getClass().getResource("BlueVictory.png"));
 			tieGame = ImageIO.read(getClass().getResource("TieScreen.png"));
@@ -97,13 +96,9 @@ public class PanelTester implements ActionListener, KeyListener, MouseListener {
 	}
 	
 	public void initTitle() {
-		g.drawImage(titleScreenImage, 0, 0, null);
+		tim.draw();
 		JPanel p = pane.getPanel();
 		p.addMouseListener(this);
-	}
-	
-	public void initGame() {
-		titleOn = false;
 	}
 	
 	private void initBackground() {
@@ -150,10 +145,8 @@ public class PanelTester implements ActionListener, KeyListener, MouseListener {
 	public void actionPerformed(ActionEvent e) {
 		// TODO Auto-generated method stub
 		
-		if (titleOn) {
-			
-			
-			initGame();
+		if (tim.on) {
+			tim.draw();
 		} else {
 			draw();
 		}
@@ -206,6 +199,7 @@ public class PanelTester implements ActionListener, KeyListener, MouseListener {
 			}
 		}
 		if ((e.getKeyCode() == 82) && (end == true)) {	restart();	}
+		if ((e.getKeyCode() == 77) && (end == true)) {	tim.on = true; tim.mode = 0;	}
 		// TODO Auto-generated method stub
 		
 	}
@@ -226,7 +220,15 @@ public class PanelTester implements ActionListener, KeyListener, MouseListener {
 
 	@Override
 	public void mouseClicked(MouseEvent e) {
-		if (titleOn) {
+		if (tim.on) {
+			int x = e.getX()/pane.currentZoom;
+			int y = e.getY()/pane.currentZoom;
+			System.out.println(x + ", " + y);
+			if ((y>335) && (y<365)) {
+				if ((x>72) && (x<172)) {	tim.mode = 1; tim.startCounter = 30;	}
+				else if ((x>200) && (x<295)) {	tim.mode = 2; tim.startCounter = 30;	}
+				else if ((x>323) && (x<420)) {	tim.mode = 3; tim.startCounter = 30;	}
+			}
 			// TODO Auto-generated method stub
 		}
 		
@@ -268,6 +270,12 @@ public class PanelTester implements ActionListener, KeyListener, MouseListener {
 	
 	public void draw() {
 		g.drawImage(backgroundImg, 0, 0, null);
+		if (tim.mode == 2) {
+			for (int i=0; i<gquiver.length; i++) {
+				gquiver[i].noBounceCount();
+				jquiver[i].noBounceCount();
+			}
+		}
 		for (int i=0; i<bushel.length; i++) {
 			Barry temp = bushel[i];
 			temp.draw();
