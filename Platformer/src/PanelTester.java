@@ -76,6 +76,7 @@ public class PanelTester implements ActionListener, KeyListener, MouseListener {
 		mi = new Ammu(this, g); me = new Ammu(this, g); ma = new Ammu(this, g); mo = new Ammu(this, g); mu = new Ammu(this, g);
 		gquiver[0] = ni; gquiver[1] = ne; gquiver[2] = na; gquiver[3] = no; gquiver[4] = nu;
 		jquiver[0] = mi; jquiver[1] = me; jquiver[2] = ma; jquiver[3] = mo; jquiver[4] = mu;
+		
 		try {
 			gvictory = ImageIO.read(getClass().getResource("GreenVictory.png"));
 			bvictory = ImageIO.read(getClass().getResource("BlueVictory.png"));
